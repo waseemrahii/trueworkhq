@@ -85,18 +85,10 @@ export default function SupportPage() {
           <div className="flex items-center justify-between">
             <Logo />
             <nav className="hidden md:flex items-center space-x-6">
-              <Link href="/companies" className="text-slate-600 hover:text-blue-600 transition-colors">
-                Companies
-              </Link>
-              <Link href="/report-issue" className="text-slate-600 hover:text-blue-600 transition-colors">
-                Report Issues
-              </Link>
-              <Link href="/community" className="text-slate-600 hover:text-blue-600 transition-colors">
-                Community
-              </Link>
-              <Link href="/support" className="text-blue-600 font-medium">
-                Support & Legal Aid
-              </Link>
+              <Link href="/companies" className="text-slate-600 hover:text-blue-600 transition-colors">Companies</Link>
+              <Link href="/report-issue" className="text-slate-600 hover:text-blue-600 transition-colors">Report Issues</Link>
+              <Link href="/community" className="text-slate-600 hover:text-blue-600 transition-colors">Community</Link>
+              <Link href="/support" className="text-blue-600 font-medium">Support & Legal Aid</Link>
             </nav>
             <div className="flex items-center space-x-3">
               <Button variant="ghost" asChild>
@@ -113,9 +105,7 @@ export default function SupportPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">Support & Legal Aid</h1>
-          <p className="text-slate-600">
-            Get immediate help, legal assistance, and mental health support for workplace issues
-          </p>
+          <p className="text-slate-600">Get immediate help, legal assistance, and mental health support for workplace issues</p>
         </div>
 
         {/* Emergency Alert */}
@@ -125,26 +115,16 @@ export default function SupportPage() {
             <div>
               <h2 className="font-bold text-red-900 mb-2">Need Immediate Help?</h2>
               <p className="text-red-700 mb-4">
-                If you're facing immediate danger, threats, or urgent workplace harassment, contact emergency services
-                immediately.
+                If you're facing immediate danger, threats, or urgent workplace harassment, contact emergency services immediately.
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {emergencyContacts.map((contact) => (
                   <div key={contact.country} className="bg-white rounded-lg p-4 border border-red-200">
                     <h3 className="font-semibold text-red-900 mb-2">{contact.country}</h3>
                     <div className="space-y-1 text-sm">
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-3 h-3" />
-                        <span>Emergency: {contact.emergency}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Shield className="w-3 h-3" />
-                        <span>Police: {contact.police}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Heart className="w-3 h-3" />
-                        <span>Women Helpline: {contact.womenHelpline}</span>
-                      </div>
+                      <div className="flex items-center gap-2"><Phone className="w-3 h-3" /><span>Emergency: {contact.emergency}</span></div>
+                      <div className="flex items-center gap-2"><Shield className="w-3 h-3" /><span>Police: {contact.police}</span></div>
+                      <div className="flex items-center gap-2"><Heart className="w-3 h-3" /><span>Women Helpline: {contact.womenHelpline}</span></div>
                     </div>
                   </div>
                 ))}
@@ -155,4 +135,50 @@ export default function SupportPage() {
 
         {/* Legal Aid Organizations */}
         <section className="mb-12">
-          <div className="flex items-center gap-2 mb\
+          <div className="flex items-center gap-2 mb-4">
+            <Shield className="w-5 h-5 text-blue-600" />
+            <h2 className="text-xl font-semibold text-slate-900">Legal Aid Organizations</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {legalAidOrganizations.map((org) => (
+              <div key={org.name} className="bg-white border border-slate-200 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-1">{org.name}</h3>
+                <p className="text-slate-600 text-sm mb-2">{org.country} • {org.availability}</p>
+                <p className="text-sm text-slate-700 mb-1">📞 {org.phone}</p>
+                <p className="text-sm text-slate-700 mb-1">✉️ {org.email}</p>
+                <a href={org.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm hover:underline mb-2 block">{org.website}</a>
+                <ul className="list-disc list-inside text-slate-600 text-sm">
+                  {org.services.map((service) => (
+                    <li key={service}>{service}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Mental Health Resources */}
+        <section className="mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <Heart className="w-5 h-5 text-pink-600" />
+            <h2 className="text-xl font-semibold text-slate-900">Mental Health Resources</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {mentalHealthResources.map((resource) => (
+              <div key={resource.name} className="bg-white border border-slate-200 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-1">{resource.name}</h3>
+                <p className="text-sm text-slate-700 mb-1">📞 {resource.phone}</p>
+                <p className="text-sm text-slate-700 mb-2">✉️ {resource.email}</p>
+                <ul className="list-disc list-inside text-slate-600 text-sm">
+                  {resource.services.map((service) => (
+                    <li key={service}>{service}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  )
+}
